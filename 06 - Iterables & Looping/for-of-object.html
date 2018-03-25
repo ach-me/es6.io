@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Iterables & Looping</title>
 </head>
+
 <body>
 
-<script>
-  const apple = {
-    color: 'Red',
-    size: 'Medium',
-    weight: 50,
-    sugar: 10
-  };
+  <script>
 
-  for (const prop in apple) {
-    const value = apple[prop];
-    console.log(value, prop);
-  }
+    // Por default no se puede loopear un objeto
+    const apple = {
+      color: 'Red',
+      size: 'Medium',
+      weight: 50,
+      sugar: 10
+    };
 
-</script>
+    // Object.keys(objeto) retorna un array con los nombres de las propiedades del objeto
+    for (const prop of Object.keys(apple)) {
+      const value = apple[prop];
+      console.log(value, prop);
+    }
+
+    for (const prop in apple) {
+      const value = apple[prop];
+      console.log(value, prop);
+    }
+  </script>
 </body>
+
 </html>

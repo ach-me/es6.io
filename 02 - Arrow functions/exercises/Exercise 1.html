@@ -32,17 +32,27 @@
 <script>
 
   // Select all the list items on the page and convert to array
-
+  const elementos = Array.from(document.querySelectorAll('[data-time]'));
+  
   // Filter for only the elements that contain the word 'flexbox'
-
-  // map down to a list of time strings
-
-  // map to an array of seconds
+  const filtered = elementos
+    .filter(item => item.textContent.includes('Flexbox'))
+    // map down to a list of time strings  
+    // Una opcion: .map(item => item.getAttribute('data-time'))
+    .map(item => item.dataset.time)
+    // map to an array of seconds
+    .map(timecode => {
+      // Primero es necesario partir el string en minutos y segundos
+      // "split" retorna un array, entonces se lo mapea para transformar sus elementos en numeros
+      const parts = timecode.split(':').map(part => parseFloat(part));
+      return (parts[0] * 60) + parts[1];
+    })
+    .reduce((total, seconds) => total + seconds, 0);
 
   // reduce to get total
 
   // 🔥 This can also be done in a single .reduce(), but we're practicing arrow functions here, so chain them!
-
+console.log(filtered);
 </script>
 </body>
 </html>

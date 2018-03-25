@@ -1,35 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Array .from() and .of()</title>
 </head>
-  <div class="people">
-    <p>Wes</p>
-    <p>Kait</p>
-    <p>Snickers</p>
-  </div>
+<div class="people">
+  <p>Wes</p>
+  <p>Kait</p>
+  <p>Snickers</p>
+</div>
+
 <body>
-<script>
-  // const people = document.querySelectorAll('.people p');
-  // const peopleArray = Array.from(people, person => {
-  //   console.log(person);
-  //   return person.textContent;
-  // });
-  // console.log(peopleArray);
+  <script>
+    // Array.from() transforma un conjunto de datos en un array, por ejemplo cuando se trabaja con elementos del DOM (que son NodeList)
 
-  // // const names = people.map(person => person.textContent);
+    // document.querySelectorAll('.people p') es un elemento del DOM tipo NodeList (no array). Para poder usar ciertos métodos (como map()), es necesario convertir el elemento en un array
 
-  function sumAll() {
-    const nums = Array.from(arguments);
-    return nums.reduce((prev, next) => prev + next, 0);
-  }
+    // El segundo parametro de Arra.from es una funcion map()
 
-  sumAll(2, 34, 23, 234, 234, 234234, 234234, 2342);
+    const people = Array.from(document.querySelectorAll('.people p'), name => name.textContent);
+    // const names = people.map(name => name.textContent);
+    console.table(people);
 
-  const ages = Array.of(12,4,23,62,34);
-  console.log(ages);
+    // const people = document.querySelectorAll('.people p');
+    // const peopleArray = Array.from(people, person => {
+    //   console.log(person);
+    //   return person.textContent;
+    // });
+    // console.log(peopleArray);
 
-</script>
+    // // const names = people.map(person => person.textContent);
+
+    // Si se quiere convertir los argumentos de un objeto en un array:
+    function sumAll() {
+      // "arguments" es un objeto. Para aplicar "reduce()" hay que transformalo en array
+      const nums = Array.from(arguments);
+      return nums.reduce((prev, current) => {
+        console.log(prev, current);
+        prev + current;
+      }, 0);
+    };
+
+    sumAll(2, 34, 23, 234, 234, 234234, 234234, 2342);
+
+    // Array.of toma un conjunto de datos y los transforma en elementos de un array
+    const ages = Array.of(12, 4, 23, 62, 34);
+    console.log(ages);
+  </script>
 </body>
+
 </html>

@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Promises!</title>
 </head>
+
 <body>
-<script>
-const postsPromise = fetch('http://wesbos.com/wp-json/wp/v2/posts');
+  <script>
+    // Una promesa es algo que sucederá en algún momento
+    // fetch retorna una "promesa"
+    const postsPromise = fetch('http://wesbos.com/wp-json/wp/v2/posts');
 
-postsPromise
-  .then(data => data.json())
-  .then(data => { console.log(data) })
-  .catch((err) => {
-    console.error(err);
-  })
-
-</script>
+    // "then" se ejecutara cuando la promesa sea retornada. De igual forma que se "escucha" un evento tipo "click", que solo se ejecuta cuando suceda el click. (este evento es llamado callback)
+    postsPromise
+      .then(data => data.json())
+      .then(data => {
+        console.log(data)
+      })
+      // Si sucede un error al esperar la promesa: catch()
+      .catch((err) => {
+        console.error(err);
+      })
+  </script>
 </body>
+
 </html>

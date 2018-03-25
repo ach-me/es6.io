@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Tagged Templates</title>
@@ -9,23 +10,26 @@
     }
   </style>
 </head>
+
 <body>
-<script>
-  function highlight(strings, ...values) {
-    let str = '';
-    strings.forEach((string, i) => {
-      str += `${string} <span contenteditable class="hl">${values[i] || ''}</span>`;
-    });
-    return str;
-  }
+  <script>
 
-  const name = 'Snickers';
-  const age = 100;
+    // "...values", es un "rest operator". Toma los valores que son pasados en ese argumento y los inserta en un array
+    function highlight(strings, ...values) {
+      let str = '';
+      strings.forEach((string, i) => {
+        str += `${string} <span contenteditable class="hl">${values[i] || ''}</span>`;
+      });
+      return str;
+    }
 
-  const sentence = highlight`My dog's name is ${name} and he is ${age} years old`;
-  document.body.innerHTML = sentence;
-  console.log(sentence);
+    const name = 'Snickers';
+    const age = 100;
 
-</script>
+    const sentence = highlight`My dog's name is ${name} and he is ${age} years old`;
+    document.body.innerHTML = sentence;
+    console.log(sentence);
+  </script>
 </body>
+
 </html>

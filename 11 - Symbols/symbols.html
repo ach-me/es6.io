@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Symbols</title>
 </head>
+
 <body>
-<script>
-  const wes = Symbol('Wes');
-  const person = Symbol('Wes');
+  <script>
+    // Symbols son identificadores unicos.
+    // Reciben un "descriptor"
 
-  const classRoom = {
-    [Symbol('Mark')] : { grade: 50, gender: 'male' },
-    [Symbol('olivia')]: { grade: 80, gender: 'female' },
-    [Symbol('olivia')]: { grade: 80, gender: 'female' },
-  };
+    const wes = Symbol('Wes');
+    const person = Symbol('Wes');
 
-  for (const person in classRoom) {
-    console.log(person);
-  }
+    const classRoom = {
+      [Symbol('Mark')]: {
+        grade: 50,
+        gender: 'male'
+      },
+      [Symbol('olivia')]: {
+        grade: 80,
+        gender: 'female'
+      },
+      [Symbol('olivia')]: {
+        grade: 80,
+        gender: 'female'
+      },
+    };
 
-  const syms = Object.getOwnPropertySymbols(classRoom);
-  const data = syms.map(sym => classRoom[sym]);
-  console.log(data);
+    for (const person in classRoom) {
+      console.log(person);
+    }
 
-</script>
+    const syms = Object.getOwnPropertySymbols(classRoom);
+    const data = syms.map(sym => classRoom[sym]);
+    console.log(data);
+  </script>
 </body>
+
 </html>

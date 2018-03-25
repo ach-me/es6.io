@@ -1,30 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Tagged Templates</title>
   <style>
     abbr {
-      border-bottom:1px dotted grey;
+      border-bottom: 1px dotted grey;
     }
   </style>
 </head>
+
 <body>
 
   <div class="bio">
 
   </div>
 
-<script>
-  const dict = {
-    HTML: 'Hyper Text Markup Language',
-    CSS: 'Cascading Style Sheets',
-    JS: 'JavaScript'
-  };
+  <script>
+    const dict = {
+      HTML: 'Hyper Text Markup Language',
+      CSS: 'Cascading Style Sheets',
+      JS: 'JavaScript'
+    };
 
-  const first = 'Wes';
-  const last = 'Bos';
+    function addAbbreviations(strings, ...values) {
+      const abbreviated = values.map(value => {
+        if (dict[value]) {
+          // Existe la propiedad en "dict"
+          return `<abbr title="${dict[value]}">${value}</abbr>`;
+        } else {
+          return value;
+        }
+      });
+      
+      // "reduce" toma dos parametros, una funcion que se ejecuta para cada elemento y un valor incial. Esa funcion puede tener hasta 4 parametros
+      // funcion(valorAnterior, valorActual, indiceActual, array)
+      return strings.reduce((sentence, string, i) => {
+        return `${sentence}${string}${abbreviated[i] || ''}`;
+      }, '');
+    };
 
-</script>
+    const first = 'Wes';
+    const last = 'Bos';
+    const sentence = addAbbreviations`Hello my name is ${first} ${last} and I love to code ${'HTML'}, ${'CSS'} and ${'JS'}`;
+
+    const bio = document.querySelector('.bio');
+    const p = document.createElement('p');
+    p.innerHTML = sentence;
+    bio.appendChild(p);
+  </script>
 </body>
+
 </html>

@@ -1,40 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Destructuring!</title>
 </head>
+
 <body>
-<script>
-  const person = {
-    first: 'Wes',
-    last: 'Bos',
-    country: 'Canada',
-    city: 'Hamilton',
-    twitter: '@wesbos'
-  };
+  <script>
+    // Desestructurar permite extraer datos de arrays, objetos, y guardarlos en una variable
+    const person = {
+      first: 'Wes',
+      last: 'Bos',
+      country: 'Canada',
+      city: 'Hamilton',
+      twitter: '@wesbos'
+    };
 
-  const { first, last, twitter } = person;
+    // { } es la sintaxis para desestructurar un objeto
+    // Esto crea una variable llamada "first" y le asigna el valor que tenga la propiedad del objeto con el mismo nombre
+    const {
+      first,
+      last,
+      twitter
+    } = person;
 
-  const wes = {
-    first: 'Wes',
-    last: 'Bos',
-    links: {
-      social: {
-        twitter: 'https://twitter.com/wesbos',
-        facebook: 'https://facebook.com/wesbos.developer',
-      },
-      web: {
-        blog: 'https://wesbos.com'
+    const wes = {
+      first: 'Wes',
+      last: 'Bos',
+      links: {
+        social: {
+          twitter: 'https://twitter.com/wesbos',
+          facebook: 'https://facebook.com/wesbos.developer',
+        },
+        web: {
+          blog: 'https://wesbos.com'
+        }
       }
-    }
-  };
+    };
 
-  const { twitter: tweet, facebook: fb } = wes.links.social;
+    // La variable se puede crear con un nombre distinto al de la propiedad
+    // Para ellos se le asigna otro nombre luego de ":"
+    // { propiedad_objeto: nombre_personalizado }
+    const {
+      twitter: tweet,
+      facebook: fb
+    } = wes.links.social;
 
-  const settings = { width: 300, color: 'black' }  // height, fontSize
-  const { width = 100, height = 100, color = 'blue', fontSize = 25} = settings;
+    const settings = {
+      width: 300,
+      color: 'black'
+    } // height, fontSize
 
-</script>
+    // Asignar valores default si el nombre de la variable no es una propiedad del objeto asociado
+    const {
+      width = 100, height = 100, color = 'blue', fontSize = 25
+    } = settings;
+  </script>
 </body>
+
 </html>

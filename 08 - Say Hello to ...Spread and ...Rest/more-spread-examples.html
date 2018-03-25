@@ -1,40 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Spread Examples</title>
 </head>
+
 <body>
   <div class="people">
     <p>Wes</p>
     <p>Kait</p>
     <p>Randy</p>
   </div>
-<script>
-  const people = Array.from(document.querySelectorAll('.people p'));
-  const names = people.map((person) => person.textContent );
+  <script>
+    // Formas de transformar un Nodelist para poder usar funciones disponibles en arrays:
 
-  const deepDish = {
-    pizzaName: 'Deep Dish',
-    size: 'Medium',
-    ingredients: ['Marinara', 'Italian Sausage', 'Dough', 'Cheese']
-  };
+    // Se selecciona uno o varios elementos y directamente se lo transforma en array
+    const people = Array.from(document.querySelectorAll('.people p'));
+    // Alternativa, se propagan los elementos del NodeList en un array
+    const people1 = [...document.querySelectorAll('.people p')];
 
-  const shoppingList = ['Milk', 'Flour', ...deepDish.ingredients];
-  // console.log(shoppingList);
+    const names = people.map((person) => person.textContent);
 
-  const comments = [
-    { id: 209384, text: 'I love your dog!' },
-    { id: 523423, text: 'Cuuute! 🐐' },
-    { id: 632429, text: 'You are so dumb' },
-    { id: 192834, text: 'Nice work on this wes!' },
-  ];
-  const id = 632429;
-  const commentIndex = comments.findIndex(comment => comment.id === id);
+    const deepDish = {
+      pizzaName: 'Deep Dish',
+      size: 'Medium',
+      ingredients: ['Marinara', 'Italian Sausage', 'Dough', 'Cheese']
+    };
 
-  const newComments = [...comments.slice(0,commentIndex), ...comments.slice(commentIndex + 1)];
-  console.log(newComments);
+    const shoppingList = ['Milk', 'Flour', ...deepDish.ingredients];
+    // console.log(shoppingList);
 
-</script>
+    const comments = [{
+        id: 209384,
+        text: 'I love your dog!'
+      },
+      {
+        id: 523423,
+        text: 'Cuuute! 🐐'
+      },
+      {
+        id: 632429,
+        text: 'You are so dumb'
+      },
+      {
+        id: 192834,
+        text: 'Nice work on this wes!'
+      },
+    ];
+
+    // Se quiere eliminar un elemento del array "comments"
+    const id = 632429;
+
+    // Se busca la posicion del elemento que tiene el valor buscado
+    const commentIndex = comments.findIndex(comment => comment.id === id);
+
+    // Se conservan todos los elementos antes y despues del valor buscado
+    // slice(indexStart, indexEnd)
+    const newComments = [...comments.slice(0, commentIndex), ...comments.slice(commentIndex + 1)];
+    console.log(newComments);
+  </script>
 </body>
+
 </html>

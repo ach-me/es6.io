@@ -8,6 +8,8 @@
 <script>
   const names = ['wes', 'kait', 'lux'];
 
+  // Las funciones arrow, son funciones anónimas, no tienen nombre, no se pueden nombrar
+
   const fullNames = names.map(function(name) {
     return `${name} bos`;
   });
@@ -16,19 +18,26 @@
     return `${name} bos`;
   });
 
+  // Si tiene solo 1 parametro, se pueden quitar los parentesis
   const fullNames3 = names.map(name => {
+    // Return explicito
     return `${name} bos`;
   });
 
+  // Sin return explicito
   const fullNames4 = names.map(name => `${name} bos`);
 
+  // Cuando no hay argumentos, deben incluirse los parentesis
   const fullNames5 = names.map(() => `cool bos`);
 
+  // Para darle nombre se las puede asignar a una variable:
   const sayMyName = (name) => {
     alert(`Hello ${name}!`)
   }
 
   sayMyName('Wes');
+
+
 
 </script>
 </body>

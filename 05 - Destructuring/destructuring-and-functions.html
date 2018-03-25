@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Destructuring in Action!</title>
 </head>
+
 <body>
-<script>
-  function convertCurrency(amount) {
-    const converted = {
-      USD: amount * 0.76,
-      GPB: amount * 0.53,
-      AUD: amount * 1.01,
-      MEX: amount * 13.30
-    };
-    return converted;
-  }
+  <script>
+    function convertCurrency(amount) {
+      const converted = {
+        USD: amount * 0.76,
+        GPB: amount * 0.53,
+        AUD: amount * 1.01,
+        MEX: amount * 13.30
+      };
+      return converted;
+    }
 
-  function tipCalc({ total = 100, tip = 0.15, tax = 0.13 } = {}) {
-    return total + (tip * total) + (tax * total);
-  }
+    // Para enviar parametros a una funcion sin importar el orden, los parametros son encerrados en llaves para pasarlos como objeto
+    
+    function tipCalc({
+      total = 100,
+      tip = 0.15,
+      tax = 0.13
+    } = {}) { // Si no se pasa ningun parametro al llamar la funcion, se asigna como valor default un objeto vacio ({ qwe = 123 } = {})
+      return total + (tip * total) + (tax * total);
+    }
 
-  const bill = tipCalc({ tip: 0.20, total: 200 });
-  console.log(bill);
-
-</script>
+    // Cuando se llame a la funcion con esos parametros, se desestructara el objeto, solo prestando atencion al nombre de las propiedades del objeto (el nombre de los parametros en la declaracion de la funcion)
+    const bill = tipCalc({
+      tip: 0.20,
+      total: 200
+      // Alguno de los parametros puede no ser enviado
+      // No es necesario respetar el orden de los parametros
+    });
+    console.log(bill);
+  </script>
 </body>
+
 </html>
