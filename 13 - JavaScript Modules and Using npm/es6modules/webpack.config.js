@@ -1,18 +1,17 @@
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'production';
 
-module.exports = {
+module.exports = {  // Donde se iniciará la aplicacion
   devtool: 'source-map',
   entry: {
     filename: './app.js'
   },
   output: {
-    filename: '_build/bundle.js'
+    filename: '_build/bundle.js' // Donde se volcara el resultado
   },
   module: {
-    loaders: [{
+    loaders: [{ // Como se manejan los archivos
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader',
@@ -22,7 +21,7 @@ module.exports = {
     }]
   },
   plugins: [
-    new UglifyJsPlugin({
+    new webpack.optimize.UglifyJsPlugin({ // Comprime el JS
       compress: {
         warnings: false
       },
@@ -31,7 +30,7 @@ module.exports = {
       },
       sourceMap: true
     }),
-    new webpack.DefinePlugin({
+    new webpack.DefinePlugin({ // El ambiente del plugin
       'process.env': {
         NODE_ENV: JSON.stringify(nodeEnv)
       },
