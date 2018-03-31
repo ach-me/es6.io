@@ -12,7 +12,7 @@ export default apiKey;
 // Al importala, se debe usar el mismo nombre con que se declaro
 // Se pueden utilizar multiples named export
 export const key = 'Named Export';
-export const url = 'http://www.google.com';
+export const url = 'http://www.wesbos.com';
 export function sayHi(name) {
   console.log(`Hello there ${name}`);
 }
