@@ -1,27 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Inheritance Review</title>
 </head>
+
 <body>
-<script>
-  function Dog(name, breed) {
-    this.name = name;
-    this.breed = breed;
-  }
+  <script>
+    // Hay dos maneras de crear clases en ES6
+    // Class declaration y class expression
 
-  Dog.prototype.bark = function() {
-    console.log(`Bark Bark! My name is ${this.name}`);
-  };
+    // CLASS EXPRESSION
+    // const dog = class {
 
-  Dog.prototype.cuddle = function() {
-    console.log(`I love you owner!`);
-  };
+    // }
 
-  const snickers = new Dog('Snickers', 'King Charles');
-  const sunny = new Dog('Sunny', 'Golden Doodle');
+    // CLASS DECLARATION
+    // "class" nombre_de_clase {}
+    class Dog {
+      // El unico método obligatorio al crear una clase es el constructor
+      // (Todos los metodos declarados en una clase no llevan la palabra "function")
+      constructor(name, breed) {
+        this.name = name;
+        this.breed = breed;
+      }
+      bark() {
+        console.log(`Bark Bark! My name is ${this.name}`);
+      }
+      cuddle() {
+        console.log(`I love you owner!`);
+      }
+      // Los metodos estaticos solo pueden ser invocados por la clase madre "Dog". No pueden ser accedidos por las instancias
+      static info() {
+        console.log('I love cats');
+      }
+      // Getter/Setter. Es una propiedad (no un metodo) que devuelve algo al llamarla
+      // "get/set" es una palabra reservada. Se utiliza: perrito.description, (sin parentesis porque es una propiedad)
+      get description() {
+        return `${this.name} is a ${this.breed} type of dog`;
+      }
+      set nicknames(value) {
+        this.nick = value.trim();
+      }
+      get nicknames() {
+        return this.nick.toUpperCase();
+      }
+    }
 
-</script>
+    const snickers = new Dog('Snickers', 'King Charles');
+    const sunny = new Dog('Sunny', 'Golden Doodle');
+  </script>
 </body>
+
 </html>
