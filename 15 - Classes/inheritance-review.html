@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Inheritance Review</title>
 </head>
+
 <body>
-<script>
-  function Dog(name, breed) {
-    this.name = name;
-    this.breed = breed;
-  }
-  Dog.prototype.bark = function() {
-    console.log(`Bark Bark! My name is ${this.name}`)
-  }
+  <script>
+    // Cuando el nombre de la funcion comienza con mayuscula significa que es un "constructor function"
+    function Dog(name, breed) {
+      // Propiedades
+      this.name = name;
+      this.breed = breed;
+    }
 
-  const snickers = new Dog('Snickers', 'King Charles');
-  const sunny = new Dog('Sunny', 'Golden Doodle');
+    // "Prototype method"
+    // El método sera heredado por cada instancia
+    Dog.prototype.bark = function () {
+      // this.name refiere al nombre con que se haya instanciado
+      console.log(`Bark Bark! My name is ${this.name}`)
+    }
 
-  Dog.prototype.bark = function() {
-    console.log(`Bark Bark🇨🇦🇨🇦🇨🇦! My name is ${this.name} and I'm a ${this.breed}`);
-  }
+    // Instancias
+    const snickers = new Dog('Snickers', 'King Charles');
+    const sunny = new Dog('Sunny', 'Golden Doodle');
 
-  Dog.prototype.cuddle = function() {
-    console.log(`I love you owner!`);
-  }
-</script>
+    Dog.prototype.bark = function () {
+      console.log(`Bark Bark🇨🇦🇨🇦🇨🇦! My name is ${this.name} and I'm a ${this.breed}`);
+    }
+
+    Dog.prototype.cuddle = function () {
+      console.log(`I love you owner!`);
+    }
+  </script>
 </body>
+
 </html>
