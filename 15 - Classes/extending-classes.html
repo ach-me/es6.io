@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Extending Classes</title>
 </head>
+
 <body>
-<script>
-  class Animal {
-    constructor(name) {
-      this.name = name;
-      this.thirst = 100;
-      this.belly = [];
+  <script>
+    class Animal {
+      constructor(name) {
+        this.name = name;
+        this.thirst = 100;
+        this.belly = [];
+      }
+      drink() {
+        this.thirst -= 10;
+        return this.thirst;
+      }
+      eat(food) {
+        this.belly.push(food);
+        return this.belly;
+      }
     }
-    drink() {
-      this.thirst -= 10;
-      return this.thirst;
-    }
-    eat(food) {
-      this.belly.push(food);
-      return this.belly;
-    }
-  }
 
-  class Dog extends Animal {
-    constructor(name, breed) {
-      super(name);
-      this.breed = breed;
+    // Extender otra clase. Comparte todas las propiedades y metodos de la clase que extiende
+    class Dog extends Animal {
+      constructor(name, breed) {
+        // Como esta clase extiende a otra, antes que nada se tiene que crear la clase madre y luego esta. Para eso se usa la palabra clave "super", pasandole todos los parametros que necesita como si se estuviera instanciando esa clase
+        super(name);
+        this.breed = breed;
+      }
+      bark() {
+        console.log('Bark bark I\'m a dog');
+      }
     }
-    bark() {
-      console.log('Bark bark I\'m a dog');
-    }
-  }
 
-  const rhino = new Animal('Rhiney');
-  const snickers = new Dog('Snickers', 'King Charles');
-
-</script>
+    const rhino = new Animal('Rhiney');
+    const snickers = new Dog('Snickers', 'King Charles');
+  </script>
 </body>
+
 </html>
