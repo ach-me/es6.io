@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>System JS</title>
 </head>
+
 <body>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
   <script src="https://jspm.io/system@0.19.js"></script>
   <script>
     // Configurar systemjs
-    System.config({ transpiler: 'babel' });
+    System.config({
+      transpiler: 'babel'
+    });
     // Establecer entry point
-    System.import('./main.js');    
+    System.import('./main.js');
   </script>
 </body>
+
 </html>
