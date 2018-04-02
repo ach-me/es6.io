@@ -7,7 +7,10 @@
 <body>
   <script src="https://jspm.io/system@0.19.js"></script>
   <script>
-
+    // Configurar systemjs
+    System.config({ transpiler: 'babel' });
+    // Establecer entry point
+    System.import('./main.js');    
   </script>
 </body>
 </html>
