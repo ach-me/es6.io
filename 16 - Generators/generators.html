@@ -1,42 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Generators</title>
 </head>
+
 <body>
-<script>
-  function* listPeople() {
-    let i = 0;
-    yield i;
-    i++;
-    yield i;
-    i++;
-    yield i;
-  }
-
-  const people = listPeople();
-
-  const inventors = [
-    { first: 'Albert', last: 'Einstein', year: 1879 },
-    { first: 'Isaac', last: 'Newton', year: 1643 },
-    { first: 'Galileo', last: 'Galilei', year: 1564 },
-    { first: 'Marie', last: 'Curie', year: 1867 },
-    { first: 'Johannes', last: 'Kepler', year: 1571 },
-    { first: 'Nicolaus', last: 'Copernicus', year: 1473 },
-    { first: 'Max', last: 'Planck', year: 1858 },
-  ];
-
-  function* loop(arr) {
-    console.log(inventors);
-    for (const item of arr) {
-      yield item;
+  <script>
+    // Una funcion "generator" puede ser detenida por determinado tiempo y puede recibir informacion adicional en algun momento
+    // Para crearla, hay que poner "*" luego de la palabra clave "function"
+    function* listPeople() {
+      let i = 0;
+      // "yield" es una especie de "return". Cada yield es retornado en diferentes ocasiones. 
+      // yield devuelve un objeto
+      yield i;
+      i++;
+      yield i;
+      i++;
+      yield i;
     }
-  }
 
-  const inventorGen = loop(inventors);
+    // Para usar la funcion, hay que invocarla y guardarla en una variable
+    const people = listPeople();
 
+    const inventors = [{
+        first: 'Albert',
+        last: 'Einstein',
+        year: 1879
+      },
+      {
+        first: 'Isaac',
+        last: 'Newton',
+        year: 1643
+      },
+      {
+        first: 'Galileo',
+        last: 'Galilei',
+        year: 1564
+      },
+      {
+        first: 'Marie',
+        last: 'Curie',
+        year: 1867
+      },
+      {
+        first: 'Johannes',
+        last: 'Kepler',
+        year: 1571
+      },
+      {
+        first: 'Nicolaus',
+        last: 'Copernicus',
+        year: 1473
+      },
+      {
+        first: 'Max',
+        last: 'Planck',
+        year: 1858
+      },
+    ];
 
-</script>
+    function* loop(arr) {
+      console.log(inventors);
+      for (const item of arr) {
+        yield item;
+      }
+    }
+
+    const inventorGen = loop(inventors);
+  </script>
 </body>
+
 </html>
