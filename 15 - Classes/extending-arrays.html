@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Extending</title>
 </head>
+
 <body>
-<script>
-  class MovieCollection extends Array {
-    constructor(name, ...items) {
-      super(...items);
-      this.name = name;
+  <script>
+    class MovieCollection extends Array {
+      // "...items" captura todos los items que vengan despues de "name"
+      constructor(name, ...items) {
+        // Si no se instancia primero la clase que se extiende, "this" no va a estar definido.
+        // Cuando se extiende una clase, se debe instanciarla primero a traves de super()
+        super(...items);
+        this.name = name;
+      }
+      add(movie) {
+        // como la clase extiende a la clase "Array", sus métodos estan disponibles, como "push()"
+        this.push(movie);
+      }
+      topRated(limit = 10) {
+        return this.sort((a, b) => (a.stars > b.stars ? -1 : 1)).slice(0, limit);
+      }
     }
-    add(movie) {
-      this.push(movie);
-    }
-    topRated(limit = 10) {
-      return this.sort((a, b) => (a.stars > b.stars ? -1 : 1)).slice(0, limit);
-    }
-  }
 
-  const movies = new MovieCollection('Wes\'s Fav Movies',
-    { name: 'Bee Movie', stars: 10 },
-    { name: 'Star Wars Trek', stars: 1 },
-    { name: 'Virgin Suicides', stars: 7 },
-    { name: 'King of the Road', stars: 8 }
-  );
+    const movies = new MovieCollection('Wes\'s Fav Movies', {
+      name: 'Bee Movie',
+      stars: 10
+    }, {
+      name: 'Star Wars Trek',
+      stars: 1
+    }, {
+      name: 'Virgin Suicides',
+      stars: 7
+    }, {
+      name: 'King of the Road',
+      stars: 8
+    });
 
-  movies.add({ name: 'Titanic', stars: 5 });
-
-</script>
+    movies.add({
+      name: 'Titanic',
+      stars: 5
+    });
+  </script>
 </body>
+
 </html>
