@@ -6,7 +6,12 @@
 </head>
 <body>
 <script>
+  // Proxies te permite sobre escribir el comportamiento default de las operaciones de un objeto
+
   const person = { name: 'Wes', age: 100 };
+
+  // Si quisieramos obtener otro nombre en lugar del que esta guardado en la propiedad del objeto "person", se crea un proxi para ese objeto
+  // Proxy(elemento, objeto handler)
   const personProxy = new Proxy(person, {
     get(target, name) {
       // console.log('someone is asking for ', target, name);
