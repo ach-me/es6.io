@@ -8,6 +8,8 @@
 <body>
   <script>
     function breathe(amount) {
+      // PROMISE personalizada
+      // parametro "resolve" cuando no hubo errores, parametro "reject" para manejar errores
       return new Promise((resolve, reject) => {
         if (amount < 500) {
           reject('That is too small of a value');
