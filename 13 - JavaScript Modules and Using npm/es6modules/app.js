@@ -1,7 +1,7 @@
 // Manejar reglas eslint desde el archivo
 
 /* eslint-disable linebreak-style, no-unused-vars */
-import { uniq } from 'lodash'; // named export entre {}
+import { uniq } from 'lodash'; // las named export van entre {}
 import insane from 'insane';
 import jsonp from 'jsonp';
 // Para acceder a la variable declarada en config.js hay que importarla
@@ -9,6 +9,7 @@ import jsonp from 'jsonp';
 // Como se utilizo una exportacion default, se puede usar cualquier nombre al importarla
 // import lalala from './src/config';
 // Named export y Export Default
+// En named export se puede cambiar el nombre: { name as otroNombre }
 import lala, { key as otroNombre, url, sayHi, age, two } from './src/config';
 import User, { createURL, gravatar } from './src/user';
 
